@@ -1,0 +1,38 @@
+ALGORITHM Sentence_reader
+VAR
+    sentence: STRING[250] := "Being a gentleman is not a way of speaking or a way of dressing, it is simply feeling good about yourself."
+    vowels: STRING[6] := "oieauy"
+    charsNbr, lettersNbr wordsNbr, vowelsNbr: INTEGER := 0
+BEGIN
+
+
+    charsNbr := sentence.length; //Nombre de caractères dans la phrase
+
+
+    //On parcourt notre tableau 
+
+    FOR i FROM 1 TO sentence.length STEP 1 DO
+
+        IF ( (sentence[i] <> " ") AND (sentence[i] <> ",") AND (sentence[i] <> ".") ) THEN 
+            lettersNbr := lettersNbr + 1; //Nombre de lettres dans la phrase
+        ELSE_IF ( (sentence[i] = " ") OR (sentence[i] = ".") ) THEN 
+            wordsNbr := wordsNbr + 1; //Nombre de mots dans la phrase
+        END_IF
+
+        FOR j FROM 1 TO vowels.length STEP 1 DO 
+            IF (sentence[i] = vowels[j]) THEN 
+                vowelsNbr := vowelsNbr + 1; //Nombre de voyelles dans la phrase
+            END_IF
+        END_FOR
+
+    END_FOR    
+
+    Write("Votre phrase contient ", charsNbr, " caractères.");
+
+    Write("Votre phrase contient ", lettersNbr, " lettres.");
+
+    Write("Votre phrase contient ", wordsNbr, " mots.");
+
+    Write("Votre phrase contient ", vowelsNbr, " voyelles.");
+
+END
